@@ -1,0 +1,7 @@
+<% provide(:title, 'About') %>
+    <h1>Contact Us</h1>
+    <p>
+      This Ruby on Rails Tutorial version was created by
+			<a href="mailto:brownie3003@gmail.com">Andy Brown</a>.
+			 In an attempt to learn how to use rails.
+    </p>
