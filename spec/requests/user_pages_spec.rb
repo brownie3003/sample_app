@@ -26,6 +26,10 @@ describe "UserPages" do
 				expect { click button submit }.to change(User, :count).by(1)
 			end
 		end
+			
+		describe "after saving the user" do
+			it { should have_link('Sign out') }
+		end
 
 		it { should have_selector('h1',		text: 'Sign Up') }
 		it { should have_selector('title', text: full_title('Sign Up')) } 
