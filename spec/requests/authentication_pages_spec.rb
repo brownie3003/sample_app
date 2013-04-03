@@ -35,6 +35,7 @@ describe "Authentications" do
 
 			it { should_not have_link('Sign in', href: signin_path) }
 		end
+
 	end
 	
 	describe "authorisation" do
@@ -56,6 +57,20 @@ describe "Authentications" do
 						page.should have_selector('title', text: 'Edit user')
 					end
 				end
+				
+				describe "in the Micropost controller" do
+			
+					describe "submtting to the create action" do
+						before { post microposts_path }
+						specify { response.should redirect_to(signin_path) }
+					end
+
+					describe "submitting to the destroy action" do
+						before { delete micropost_path(FactoryGirl.create(:micropost)) }
+						specify { response.should redirect_to(signin_path) }
+					end
+				end
+
 			end
 		
 
@@ -92,6 +107,7 @@ describe "Authentications" do
 					specify { response.should redirect_to(root_path) }
 				end
 			end
+		
 		end
 
 		describe "as non-admin user" do
@@ -105,5 +121,7 @@ describe "Authentications" do
 				specify { response.should redirect_to(root_path) }
 			end
 		end
+
 	end
+
 end
